@@ -16,7 +16,13 @@
         <a href="#contact" class="btn btn-primary">Contact me</a>
       </div>
 
-      <button class="mobile-menu" @click="toggleMenu">
+      <button
+        class="mobile-menu"
+        :class="{ 'is-open': menuOpen }"
+        @click="toggleMenu"
+        aria-label="Toggle navigation menu"
+        :aria-expanded="menuOpen ? 'true' : 'false'"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -36,7 +42,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
 const isScrolled = ref(false);
 const menuOpen = ref(false);
@@ -53,8 +59,16 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
 
+watch(menuOpen, (open) => {
+  if (typeof window === 'undefined') return;
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('scroll', handleScroll);
+    document.body.style.overflow = '';
+  }
 });
 </script>
 
@@ -166,6 +180,18 @@ onUnmounted(() => {
   height: 2px;
   background: var(--neutral-200);
   transition: all 0.3s ease;
+}
+
+.mobile-menu.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .mobile-nav {

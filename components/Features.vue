@@ -357,20 +357,14 @@ const closeModal = () => {
 }
 
 .features-grid {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: var(--spacing-xl);
-	overflow-x: auto;
-	overflow-y: visible;
-	padding-bottom: calc(var(--spacing-lg) + 0.5rem);
-	scroll-snap-type: x mandatory;
-	scroll-padding-left: var(--spacing-lg);
-	-webkit-overflow-scrolling: touch;
+	padding-bottom: var(--spacing-lg);
 }
 
 .feature-card {
 	position: relative;
-	flex: 0 0 auto;
-	min-width: min(80vw, 520px);
 	padding: var(--spacing-xl);
 	background:
 		linear-gradient(145deg, rgba(5, 0, 10, 0.95), rgba(36, 28, 56, 0.98)),
@@ -378,7 +372,6 @@ const closeModal = () => {
 	border-radius: 1.75rem;
 	transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
 	border: 1px solid rgba(168, 154, 196, 0.6);
-	scroll-snap-align: start;
 }
 
 .feature-card:hover {
