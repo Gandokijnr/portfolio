@@ -49,12 +49,12 @@
   position: relative;
 	padding: calc(var(--spacing-3xl) + 4rem) 0 var(--spacing-3xl);
 	background:
-		radial-gradient(circle at -10% -20%, rgba(255, 106, 61, 0.4), transparent 60%),
-		radial-gradient(circle at 110% 120%, rgba(138, 30, 255, 0.6), transparent 60%),
+		radial-gradient(circle at -10% -20%, rgba(255, 255, 255, 0.075), transparent 60%),
+		radial-gradient(circle at 110% 120%, rgba(25, 0, 51, 0.6), transparent 60%),
 		linear-gradient(135deg, var(--neutral-950) 0%, var(--neutral-900) 40%, var(--accent-purple-700) 100%);
 	overflow: hidden;
 }
-
+  
 .hero::before,
 .hero::after {
   content: '';
