@@ -29,6 +29,10 @@
         </div>
       </div>
       <div class="visual">
+        <div class="hero-orbit">
+          <div class="hero-orb"></div>
+          <div class="hero-orb-ring"></div>
+        </div>
         <div class="placeholder-image">
           <img
             src="https://res.cloudinary.com/dqqycsgmn/image/upload/v1757150936/ea52cef7-48ae-4f4e-9376-0d76275ea776.png"
@@ -42,56 +46,86 @@
 
 <style scoped>
 .hero {
-  padding: calc(var(--spacing-3xl) + 4rem) 0 var(--spacing-3xl);
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
-    radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 55%),
-    linear-gradient(180deg, var(--neutral-950) 0%, var(--neutral-900) 100%);
+  position: relative;
+	padding: calc(var(--spacing-3xl) + 4rem) 0 var(--spacing-3xl);
+	background:
+		radial-gradient(circle at -10% -20%, rgba(255, 106, 61, 0.4), transparent 60%),
+		radial-gradient(circle at 110% 120%, rgba(138, 30, 255, 0.6), transparent 60%),
+		linear-gradient(135deg, var(--neutral-950) 0%, var(--neutral-900) 40%, var(--accent-purple-700) 100%);
+	overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -80px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.28), transparent 70%);
+}
+
+.hero::after {
+  width: 520px;
+  height: 520px;
+  bottom: -220px;
+  right: -140px;
+  background: radial-gradient(circle at 70% 70%, rgba(255, 106, 61, 0.6), transparent 70%);
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-3xl);
-  align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-md);
+	display: grid;
+	grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+	gap: var(--spacing-3xl);
+	align-items: center;
 }
 
 .content {
-  max-width: 600px;
+	max-width: 600px;
 }
 
 .badge {
-  display: inline-block;
+	display: inline-block;
   padding: 0.5rem 1rem;
   background: rgba(15, 23, 42, 0.9);
   color: var(--primary-100);
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  	margin-bottom: var(--spacing-md);
+	border: 1px solid rgba(148, 163, 184, 0.4);
 }
 
 .title {
-  font-size: 3.5rem;
-  margin-bottom: var(--spacing-md);
-  color: var(--neutral-50);
-  letter-spacing: -0.02em;
+	font-size: clamp(3.25rem, 7vw, 4.75rem);
+	margin-bottom: var(--spacing-md);
+	color: var(--neutral-50);
+	letter-spacing: -0.06em;
+	text-transform: uppercase;
+	line-height: 0.9;
 }
 
 .subtitle {
-  font-size: 1.25rem;
-  color: var(--neutral-300);
+	font-size: 1.25rem;
+	color: var(--neutral-300);
   margin-bottom: var(--spacing-xl);
   line-height: 1.5;
 }
 
 .cta-buttons {
-  display: flex;
-  gap: var(--spacing-sm);
+	display: flex;
+	gap: var(--spacing-sm);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -139,8 +173,8 @@
 }
 
 .stats {
-  display: flex;
-  gap: var(--spacing-xl);
+	display: flex;
+	gap: var(--spacing-xl);
 }
 
 .stat {
@@ -160,22 +194,26 @@
 }
 
 .visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+  perspective: 1200px;
 }
 
 .placeholder-image {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.8);
-  transition: transform 0.3s ease;
+	width: 100%;
+	max-width: 520px;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	box-shadow: 0 28px 80px rgba(5, 0, 10, 0.85);
+	transition: transform 0.5s ease, box-shadow 0.5s ease;
+	transform-origin: center right;
 }
 
 .placeholder-image:hover {
-  transform: translateY(-8px);
+	transform: translateY(-10px) rotate3d(1, -1, 0, 10deg) scale(1.02);
+	box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95);
 }
 
 .placeholder-image svg {
@@ -185,14 +223,59 @@
 }
 
 .placeholder-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-orb {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.75), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(255, 106, 61, 0.85), transparent 65%);
+  box-shadow:
+    0 0 80px rgba(255, 106, 61, 0.7),
+    0 0 140px rgba(138, 30, 255, 0.85);
+  transform: translate3d(-5%, -6%, 0);
+  animation: hero-orb-float 10s ease-in-out infinite alternate;
+}
+
+.hero-orb-ring {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 999px;
+  border: 1px solid rgba(253, 242, 255, 0.25);
+  transform: rotate3d(1, 1, 0, 35deg);
+  box-shadow: 0 0 60px rgba(253, 242, 255, 0.2);
+}
+
+@keyframes hero-orb-float {
+  0% {
+    transform: translate3d(-5%, -6%, 0);
+  }
+  50% {
+    transform: translate3d(-2%, -10%, 20px);
+  }
+  100% {
+    transform: translate3d(3%, -4%, -10px);
+  }
 }
 
 @media (max-width: 968px) {
-  .container {
-    grid-template-columns: 1fr;
+	.container {
+		grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
   }
 
@@ -206,8 +289,8 @@
 }
 
 @media (max-width: 640px) {
-  .hero {
-    padding: calc(var(--spacing-2xl) + 4rem) 0 var(--spacing-2xl);
+	.hero {
+		padding: calc(var(--spacing-2xl) + 4rem) 0 var(--spacing-2xl);
   }
 
   .title {

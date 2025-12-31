@@ -322,19 +322,25 @@ const closeModal = () => {
 
 <style scoped>
 .projects {
-  padding: var(--spacing-3xl) 0;
-  background: linear-gradient(180deg, var(--neutral-900) 0%, var(--neutral-950) 100%);
+	position: relative;
+	padding: var(--spacing-3xl) 0;
+	background:
+		radial-gradient(circle at -10% 0%, rgba(255, 106, 61, 0.18), transparent 55%),
+		radial-gradient(circle at 110% 100%, rgba(138, 30, 255, 0.4), transparent 55%),
+		linear-gradient(180deg, var(--neutral-900) 0%, var(--neutral-950) 100%);
+	overflow: hidden;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-lg);
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: var(--spacing-3xl);
+	text-align: left;
+	margin-bottom: var(--spacing-3xl);
+	max-width: 640px;
 }
 
 .section-title {
@@ -351,24 +357,34 @@ const closeModal = () => {
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
+	display: flex;
+	gap: var(--spacing-xl);
+	overflow-x: auto;
+	overflow-y: visible;
+	padding-bottom: calc(var(--spacing-lg) + 0.5rem);
+	scroll-snap-type: x mandatory;
+	scroll-padding-left: var(--spacing-lg);
+	-webkit-overflow-scrolling: touch;
 }
 
 .feature-card {
-  padding: var(--spacing-xl);
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 1rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(148, 163, 184, 0.4);
+	position: relative;
+	flex: 0 0 auto;
+	min-width: min(80vw, 520px);
+	padding: var(--spacing-xl);
+	background:
+		linear-gradient(145deg, rgba(5, 0, 10, 0.95), rgba(36, 28, 56, 0.98)),
+		radial-gradient(circle at 0% 0%, rgba(255, 239, 234, 0.267), transparent 55%);
+	border-radius: 1.75rem;
+	transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+	border: 1px solid rgba(168, 154, 196, 0.6);
+	scroll-snap-align: start;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
-  background: rgba(15, 23, 42, 1);
-  border-color: var(--primary-500);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.8);
+	transform: translateY(-10px) rotate3d(1, -1, 0, 6deg) scale(1.01);
+	border-color: var(--primary-500);
+	box-shadow: 0 28px 80px rgba(0, 0, 0, 0.95);
 }
 
 .icon {
