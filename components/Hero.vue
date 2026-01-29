@@ -51,6 +51,11 @@
             <span class="tech-badge">TypeScript</span>
             <span class="tech-badge">React</span>
             <span class="tech-badge">Python</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Tailwind CSS</span>
+            <span class="tech-badge">Wordpress</span>
+            <span class="tech-badge">Git</span>
+
           </div>
         </div>
       </div>
