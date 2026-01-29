@@ -7,7 +7,7 @@
           <span class="greeting-text">Hello, I'm</span>
         </div>
         <h1 class="title">Gideon</h1>
-        <p class="role">Web Developer & UI Designer</p>
+        <p class="role">Web Developer, Data Entry Specialist & Digital Marketer</p>
         <p class="subtitle">
           I craft modern, responsive web applications with a focus on intuitive design 
           and exceptional user experiences. Specializing in Vue/Nuxt, React, Python, 
