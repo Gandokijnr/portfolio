@@ -10,7 +10,7 @@
         <p class="role">Web Developer, Data Entry Specialist & Digital Marketer</p>
         <p class="subtitle">
           I craft modern, responsive web applications with a focus on intuitive design 
-          and exceptional user experiences. Specializing in Vue/Nuxt, React, Python, 
+          and exceptional user experiences. Specializing in Vue/Nuxt, React, Python, Wordpress 
           and Node.js to bring ideas to life.
         </p>
         
